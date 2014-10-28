@@ -1,9 +1,14 @@
 package com.labofclouds.whatsappmediacenter;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import java.io.File;
 
 
 public class MainActivity extends Activity {
@@ -14,23 +19,42 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+    public void sendText(View view) {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.setPackage("com.whatsapp");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "Teste.");
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+    public void sendImage(View view) {
+        Intent sendIntent = new Intent();
+        sendIntent.setPackage("com.whatsapp");
+
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File("/sdcard/imagem.jpg")));
+        sendIntent.setType("image/*");
+        startActivity(Intent.createChooser(sendIntent, "Send"));
+    }
+
+    public void sendSound(View view) {
+        Intent sendIntent = new Intent();
+        sendIntent.setPackage("com.whatsapp");
+
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File("/sdcard/som.mp3")));
+        sendIntent.setType("audio/*");
+        startActivity(Intent.createChooser(sendIntent, "Send"));
+    }
+
+    public void sendVideo(View view) {
+        Intent sendIntent = new Intent();
+        sendIntent.setPackage("com.whatsapp");
+
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File("/sdcard/video.mov")));
+        sendIntent.setType("video/*");
+        startActivity(Intent.createChooser(sendIntent, "Send"));
     }
 }

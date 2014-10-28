@@ -1,16 +1,35 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<GridLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
-    <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/button1"
+        android:text="Enviar Texto"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:onClick="sendText" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/button2"
+        android:text="Enviar Imagem"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:onClick="sendImage" />
+
+    <Button
+        android:id="@+id/button3"
+        android:text="Enviar Som"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:onClick="sendSound" />
+
+    <Button
+        android:id="@+id/button4"
+        android:text="Enviar Video"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:onClick="sendVideo" />
+
+</GridLayout>
